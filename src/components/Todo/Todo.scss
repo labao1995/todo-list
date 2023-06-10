@@ -1,111 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
-
-.main-todo {
-  .todo-input {
-    display: flex;
-    input {
-      width: 475px;
-      height: 56px;
-      border: 1px solid #bdbdbd;
-      border-radius: 6px;
-      padding-left: 15px;
-      font-weight: 300;
-      font-size: 14px;
-      font-family: "Montserrat", sans-serif;
-      color: #000000;
-      &:focus {
-        outline: none;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      }
-    }
-
-    button {
-      width: 190px;
-      height: 60px;
-      margin-left: 30px;
-      background-color: #2f80ed;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      transition: ease-in-out 0.2s;
-      &:disabled,
-      &[disabled] {
-        border: 1px solid #d4d4d4;
-        background-color: #cccccc;
-        color: #666666;
-      }
-    }
-    .delete-all{
-      width: 190px;
-      height: 60px;
-      margin-left: 30px;
-      background-color: #ed2f2f;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      transition: ease-in-out 0.2s;
-      &:disabled,
-      &[disabled] {
-        border: 1px solid #d4d4d4;
-        background-color: #cccccc;
-        color: #666666;
-      }
-    }
+.todo-item {
+  display: flex;
+  max-width: 600px;
+  text-align: left;
+  align-items: center;
+  margin-bottom: 28px;
+  input {
+    width: 24px;
+    height: 24px;
+    margin: 0px 7px 0px 0px;
+    border: 1px solid #828282;
+    border-radius: 4px;
   }
-  .todo-task {
-    display: flex;
-    .todo-list {
-      display: flex;
-      flex-direction: column;
-      list-style-type: none;
-      padding-left: 0;
-      li {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 10px 0px 10px 0px;
-        font-weight: 500;
-        font-size: 16px;
-        input {
-          margin-right: 20px;
-          width: 25px;
-          height: 25px;
-          border-radius: 5px;
-        }
-        .completed-todo {
-          text-decoration: line-through;
-        }
-        .delete-todo {
-          margin-left: 20px;
-          width: 100px;
-          height: 30px;
-          background-color: rgb(231, 121, 121);
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-          color: white;
-          border-radius: 5px;
-          display: flex;
-          text-align: center;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-    }
+  span {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
   }
-}
-
-@media only screen and (max-width: 768px) {
-  .main-todo {
-    .todo-input {
-      input {
-        width: 250px;
-        height: 56px;
-      }
-      button {
-        width: 100px;
-        height: 56px;
-      }
-    }
+  .todo-completed{
+    text-decoration: line-through;
   }
 }
