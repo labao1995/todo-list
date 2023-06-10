@@ -1,6 +1,6 @@
 import './App.scss';
 import { v4 } from 'uuid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TodoList from './components/TodoList/TodoList';
 
 function App() {
@@ -10,11 +10,18 @@ function App() {
     { isActive: false, tabCheck: 'completed', title: 'Completed', href: '#' }
   ]);
   const [todo, setTodo] = useState('');
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(() => {
+    const storageTodo = JSON.parse(localStorage.getItem('todoList'));
+    return storageTodo ?? []
+  });
   const displayTodoList = todoList.filter(item => item.isDisplay)
 
   const handleAddToto = () => {
-    setTodoList([...todoList, { id: v4(), name: todo, isCompleted: false, isDisplay: true }])
+    setTodoList((prev) => {
+      const newTodo = [...prev, { id: v4(), name: todo, isCompleted: false, isDisplay: true }]
+
+      return newTodo
+    })
     setTodo('')
   }
 
@@ -23,6 +30,11 @@ function App() {
       return todoItem.id === todo.id ? { ...todoItem, isCompleted: !todoItem.isCompleted } : todoItem
     }))
   }
+
+  useEffect(() => {
+    const jsonToto = JSON.stringify(todoList);
+    localStorage.setItem('todoList', jsonToto)
+  }, [todoList])
 
   const handleToggleState = (tab, index) => {
     const tabCheck = tab.tabCheck;
